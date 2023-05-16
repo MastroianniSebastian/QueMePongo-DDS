@@ -1,5 +1,5 @@
 package ar.edu.utn.frba.dds;
 
-public class Material {
-  private String nombre;
+public enum Material {
+  ALGODON, PIQUE, ACETATO, LONA, CUERO
 }

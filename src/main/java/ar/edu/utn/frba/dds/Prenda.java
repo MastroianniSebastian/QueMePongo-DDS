@@ -5,35 +5,53 @@ import ar.edu.utn.frba.dds.Excepciones.MaterialException;
 import ar.edu.utn.frba.dds.Excepciones.TipoException;
 
 public class Prenda {
-  private String nombre; //El nombre es el nombre que le quiera poner el usuario a la prenda
   private Color colorPrincipal;
   private Color colorSecundario;
   private Material material;
-  private Tipo tipo;
+  private TipoDePrenda tipo;
+  private Trama trama;
 
-  public Prenda(String nombre, Color colorPrincipal, Material material, Tipo tipo) {
+  private Categoria categoria;
 
-    if(colorPrincipal == null){
-      throw new ColorException("El color principal no puede ser un valor nulo");
-    }
-    if(material == null){
-    throw new MaterialException("El material no puede ser un valor nulo");
-    }
-    if(tipo == null){
-    throw new TipoException("El ti´po no puede ser un valor nulo");
-    }
+  private Formalidad formalidad;
 
-    this.nombre = nombre;
+  //Se supone que el new Prenda(...) solo lo debe usar el Borrador
+  //Por lo tanto solo el a traves del Borrador se puede instanciar
+  //Una Prenda
+  public Prenda(Color colorPrincipal, Color colorSecundario, Material material, TipoDePrenda tipo, Trama trama, Categoria categoria) {
     this.colorPrincipal = colorPrincipal;
+    this.colorSecundario = colorSecundario;
     this.material = material;
     this.tipo = tipo;
+    this.trama = trama;
+    this.categoria = categoria;
   }
 
-  public Tipo getTipo() {
-    return tipo;
+  public boolean esSuperior() {
+    return this.categoria == Categoria.PARTE_SUPERIOR;
   }
 
-  public void setColorSecundario(Color colorSecundario) {
-    this.colorSecundario = colorSecundario;
+  public boolean esInferior() {
+    return this.categoria == Categoria.PARTE_INFERIOR;
+  }
+
+  public boolean esAccesorio() {
+    return this.categoria == Categoria.ACCESORIOS;
+  }
+
+  public boolean esCalzado() {
+    return this.categoria == Categoria.CALZADO;
+  }
+
+  public boolean esInformal() {
+    return this.formalidad == Formalidad.INFORMAL;
+  }
+
+  public boolean esFormal() {
+    return this.formalidad == Formalidad.FORMAL;
+  }
+
+  public boolean esNeutra() {
+    return this.formalidad == Formalidad.NEUTRA;
   }
 }
