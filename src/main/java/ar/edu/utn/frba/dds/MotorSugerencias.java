@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 public interface MotorSugerencias {
 
   List<Prenda> getPrendasValidas(Usuario usuario);
-  default List<Sugerencia> generarSugerencias(Usuario usuario) {
+  default List<Sugerencia> generarSugerencias(Usuario usuario, Integer temperaturaActual) {
     //Se usa default para no repetir logica (Con la ayuda del metodo de getPrendasValidas)
-    List<Prenda> prendasSuperiores = this.getPrendasValidas(usuario).stream().filter(p -> p.esSuperior()).collect(Collectors.toList());
-    List<Prenda> prendasInferiores = this.getPrendasValidas(usuario).stream().filter(p -> p.esInferior()).collect(Collectors.toList());
-    List<Prenda> calzados = this.getPrendasValidas(usuario).stream().filter(p -> p.esCalzado()).collect(Collectors.toList());
+    List<Prenda> prendasSuperiores = this.getPrendasValidas(usuario).stream().filter(p -> p.esSuperior() && p.esAdecuada(temperaturaActual)).collect(Collectors.toList());
+    List<Prenda> prendasInferiores = this.getPrendasValidas(usuario).stream().filter(p -> p.esInferior() && p.esAdecuada(temperaturaActual)).collect(Collectors.toList());
+    List<Prenda> calzados = this.getPrendasValidas(usuario).stream().filter(p -> p.esCalzado() && p.esAdecuada(temperaturaActual)).collect(Collectors.toList());
     //Uso una biblioteca como Guava para el producto cartesiano
     List<List<Prenda>> combinaciones = Lists.cartesianProduct(prendasSuperiores, prendasInferiores, calzados);
 

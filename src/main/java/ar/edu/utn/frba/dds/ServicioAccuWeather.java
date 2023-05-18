@@ -9,8 +9,7 @@ public class ServicioAccuWeather implements ServicioClimatico{
     //AccuWeatherAPI apiClima = new AccuWeatherAPI();
     //List<Map<String, Object>> condicionesClimaticas = apiClima.getWeather(“Buenos Aires, Argentina”);
    // condicionesClimaticas.get(0).get("PrecipitationProbability");
-    //TODO Arreglar tema de interfaz accuweather
-    //TODO y devolver el valor de la temperatura de la ciudad
+    //TODO Hacer mock para probar y evitar incurrir en costos innecesarios
 
     return null;
   }

@@ -15,6 +15,8 @@ public class Prenda {
 
   private Formalidad formalidad;
 
+  private Integer temperaturaMaximaAdecuada;
+
   //Se supone que el new Prenda(...) solo lo debe usar el Borrador
   //Por lo tanto solo el a traves del Borrador se puede instanciar
   //Una Prenda
@@ -54,4 +56,6 @@ public class Prenda {
   public boolean esNeutra() {
     return this.formalidad == Formalidad.NEUTRA;
   }
+
+  public boolean esAdecuada(Integer temperaturaActual){return temperaturaActual <= this.temperaturaMaximaAdecuada;}
 }

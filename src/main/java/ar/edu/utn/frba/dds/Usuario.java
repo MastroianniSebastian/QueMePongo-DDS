@@ -16,7 +16,8 @@ public class Usuario {
   }
 
   List<Sugerencia> generarSugerencias() {
-    return this.motorSugerencias.generarSugerencias(this);
+    return this.motorSugerencias.generarSugerencias(this, servicioClimatico.obtenerTemperaturaActualEnLaCiudad("Buenos Aires, Argentina"));
+    //TODO Ver hardcodeo de ciudad
   }
 
   public void setMotor(MotorSugerencias motor) {

@@ -10,4 +10,8 @@ public class ProveedorDeServicioClimatico {
   static void setServicioClimatico(ServicioClimatico servicioClimatico){
     ProveedorDeServicioClimatico.servicioClimatico = servicioClimatico;
   }
+
+  //Un administrador deberia acceder a esta clase estatica y setear
+  //el servicio climatico que quiera.
+  //Ejemplo: ProveedorDeServicioClimatico.setServicioClimatico(servicioAccuWeather);
 }
