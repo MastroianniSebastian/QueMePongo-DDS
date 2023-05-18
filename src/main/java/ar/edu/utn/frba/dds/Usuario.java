@@ -9,7 +9,9 @@ public class Usuario {
   Integer edad;
   MotorSugerencias motorSugerencias;
 
-  public Usuario(Integer edad, MotorSugerencias motor) {
+  ServicioClimatico servicioClimatico;
+
+  public Usuario(Integer edad, MotorSugerencias motor, ServicioClimatico servicioClimatico) {
     //TODO
   }
 
