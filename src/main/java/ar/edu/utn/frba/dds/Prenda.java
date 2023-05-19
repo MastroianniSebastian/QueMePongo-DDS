@@ -20,13 +20,17 @@ public class Prenda {
   //Se supone que el new Prenda(...) solo lo debe usar el Borrador
   //Por lo tanto solo el a traves del Borrador se puede instanciar
   //Una Prenda
-  public Prenda(Color colorPrincipal, Color colorSecundario, Material material, TipoDePrenda tipo, Trama trama, Categoria categoria) {
+
+
+  public Prenda(Color colorPrincipal, Color colorSecundario, Material material, TipoDePrenda tipo, Trama trama, Categoria categoria, Formalidad formalidad, Integer temperaturaMaximaAdecuada) {
     this.colorPrincipal = colorPrincipal;
     this.colorSecundario = colorSecundario;
     this.material = material;
     this.tipo = tipo;
     this.trama = trama;
     this.categoria = categoria;
+    this.formalidad = formalidad;
+    this.temperaturaMaximaAdecuada = temperaturaMaximaAdecuada;
   }
 
   public boolean esSuperior() {

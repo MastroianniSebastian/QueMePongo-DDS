@@ -13,6 +13,7 @@ public class AccuWeatherAPIMock {
     variablesClimaticasBuenosAires.put("Temperature",15);
     variablesClimaticasBuenosAires.put("Wetness",90);
     List<Map<String,Object>> listadoDeCiudades = new ArrayList<>();
+    listadoDeCiudades.add(variablesClimaticasBuenosAires);
     return listadoDeCiudades;
   }
 }

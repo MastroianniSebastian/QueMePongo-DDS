@@ -7,6 +7,7 @@ import ar.edu.utn.frba.dds.Excepciones.MaterialException;
 import ar.edu.utn.frba.dds.Excepciones.TipoException;
 import ar.edu.utn.frba.dds.Excepciones.TramaException;
 import com.google.common.base.Preconditions;
+import java.text.Normalizer;
 import java.util.List;
 
 public class Borrador {
@@ -18,6 +19,10 @@ public class Borrador {
   private Trama trama;
 
   private Categoria categoria;
+
+  private Formalidad formalidad;
+
+  private Integer temperaturaMaximaAdecuada;
 
 
   public void especificarColorPrincipal(Color colorPrincipal) {
@@ -49,8 +54,18 @@ public class Borrador {
     this.categoria = categoria;
   }
 
+  public void especificarFormalidad(Formalidad formalidad){
+    Preconditions.checkNotNull(formalidad, "La formalidad no puede ser nula");
+    this.formalidad = formalidad;
+  }
+
+  public void especificarTemperaturaMaximaAdecuada(Integer temperaturaMaximaAdecuada){
+    Preconditions.checkNotNull(temperaturaMaximaAdecuada, "La temperatura maxima adecuada no puede ser nula");
+    this.temperaturaMaximaAdecuada = temperaturaMaximaAdecuada;
+  }
+
   public Prenda crearPrenda(){
-    return new Prenda(colorPrincipal,colorSecundario,material,tipo,trama, categoria);
+    return new Prenda(colorPrincipal,colorSecundario,material,tipo,trama, categoria,formalidad,temperaturaMaximaAdecuada);
 
   }
 
@@ -64,19 +79,19 @@ public class Borrador {
     List<TipoDePrenda> tiposDePrendaValidasParaLaLona = List.of(ZAPATILLAS);
     List<TipoDePrenda> tiposDePrendaValidasParaElCuero = List.of(CAMPERA,ZAPATOS,POLLERA,PANTALON);
 
-    if (material.equals(Material.ALGODON) && !tiposDePrendaValidasParaElAlgodon.contains(material)){
+    if (material.equals(Material.ALGODON) && !tiposDePrendaValidasParaElAlgodon.contains(tipo)){
       throw new MaterialException("Material no valido para el tipo de prenda");
     }
-    if (material.equals(Material.PIQUE) && !tiposDePrendaValidasParaElPique.contains(material)){
+    if (material.equals(Material.PIQUE) && !tiposDePrendaValidasParaElPique.contains(tipo)){
       throw new MaterialException("Material no valido para el tipo de prenda");
     }
-    if (material.equals(Material.ACETATO) && !tiposDePrendaValidasParaElAcetato.contains(material)){
+    if (material.equals(Material.ACETATO) && !tiposDePrendaValidasParaElAcetato.contains(tipo)){
       throw new MaterialException("Material no valido para el tipo de prenda");
     }
-    if (material.equals(Material.LONA) && !tiposDePrendaValidasParaLaLona.contains(material)){
+    if (material.equals(Material.LONA) && !tiposDePrendaValidasParaLaLona.contains(tipo)){
       throw new MaterialException("Material no valido para el tipo de prenda");
     }
-    if (material.equals(Material.CUERO) && !tiposDePrendaValidasParaElCuero.contains(material)){
+    if (material.equals(Material.CUERO) && !tiposDePrendaValidasParaElCuero.contains(tipo)){
       throw new MaterialException("Material no valido para el tipo de prenda");
     }
     return;
