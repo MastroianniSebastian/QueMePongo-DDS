@@ -69,14 +69,7 @@ public class Borrador {
 
 
   private void validarMaterialConsistenteConTipoDePrenda(Material material) {
-    Map<Material, List<TipoDePrenda>> tiposDePrendaValidas = new HashMap<>();
-    tiposDePrendaValidas.put(Material.ALGODON, List.of(REMERA, CAMISA, PANTALON, SACO, CAMPERA, SHORT, POLLERA));
-    tiposDePrendaValidas.put(Material.PIQUE, List.of(SACO, REMERA, CHOMBA));
-    tiposDePrendaValidas.put(Material.ACETATO, List.of(SACO, CAMPERA, PANTALON, POLLERA));
-    tiposDePrendaValidas.put(Material.LONA, List.of(ZAPATILLAS));
-    tiposDePrendaValidas.put(Material.CUERO, List.of(CAMPERA, ZAPATOS, POLLERA, PANTALON));
-
-    if (!tiposDePrendaValidas.getOrDefault(material, Collections.emptyList()).contains(tipo)) {
+    if (!material.getTipoDePrendasValidas().contains(tipo)) {
       throw new MaterialException("Material no válido para el tipo de prenda");
     }
   }
