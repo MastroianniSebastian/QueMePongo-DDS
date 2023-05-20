@@ -6,14 +6,9 @@ import java.util.Map;
 public class ServicioAccuWeather implements ServicioClimatico{
   @Override
   public Integer obtenerTemperaturaActualEnLaCiudad(String ciudad) {
-    //AccuWeatherAPI apiClima = new AccuWeatherAPI();
-    //List<Map<String, Object>> condicionesClimaticas = apiClima.getWeather(“Buenos Aires, Argentina”);
-   // condicionesClimaticas.get(0).get("PrecipitationProbability");
-    ciudad= "Buenos Aires, Argentina";
-    AccuWeatherAPIMock apiClima = new AccuWeatherAPIMock();
+    AccuWeatherAPI apiClima = new AccuWeatherAPI();
     List<Map<String, Object>> condicionesClimaticas = apiClima.getWeather(ciudad);
-    //TODO Hacer mock para probar y evitar incurrir en costos innecesarios
+    condicionesClimaticas.get(0).get("PrecipitationProbability");
 
-    return (Integer) condicionesClimaticas.get(0).get("Temperature");
-  }
+    return (Integer) condicionesClimaticas.get(0).get("Temperature");  }
 }

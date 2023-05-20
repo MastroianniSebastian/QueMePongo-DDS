@@ -1,14 +1,12 @@
 package ar.edu.utn.frba.dds;
 
 import static ar.edu.utn.frba.dds.TipoDePrenda.*;
-
-import ar.edu.utn.frba.dds.Excepciones.ColorException;
 import ar.edu.utn.frba.dds.Excepciones.MaterialException;
-import ar.edu.utn.frba.dds.Excepciones.TipoException;
-import ar.edu.utn.frba.dds.Excepciones.TramaException;
 import com.google.common.base.Preconditions;
-import java.text.Normalizer;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Borrador {
 
@@ -71,30 +69,16 @@ public class Borrador {
 
 
   private void validarMaterialConsistenteConTipoDePrenda(Material material) {
-    //TODO hacer mas lindo sin ifs por que es un asco
-    List<TipoDePrenda> tiposDePrendaValidasParaElAlgodon = List.of(REMERA,CAMISA,
-        PANTALON,SACO,CAMPERA,SHORT,POLLERA);
-    List<TipoDePrenda> tiposDePrendaValidasParaElPique = List.of(SACO,REMERA,CHOMBA);
-    List<TipoDePrenda> tiposDePrendaValidasParaElAcetato = List.of(SACO,CAMPERA, PANTALON,POLLERA);
-    List<TipoDePrenda> tiposDePrendaValidasParaLaLona = List.of(ZAPATILLAS);
-    List<TipoDePrenda> tiposDePrendaValidasParaElCuero = List.of(CAMPERA,ZAPATOS,POLLERA,PANTALON);
+    Map<Material, List<TipoDePrenda>> tiposDePrendaValidas = new HashMap<>();
+    tiposDePrendaValidas.put(Material.ALGODON, List.of(REMERA, CAMISA, PANTALON, SACO, CAMPERA, SHORT, POLLERA));
+    tiposDePrendaValidas.put(Material.PIQUE, List.of(SACO, REMERA, CHOMBA));
+    tiposDePrendaValidas.put(Material.ACETATO, List.of(SACO, CAMPERA, PANTALON, POLLERA));
+    tiposDePrendaValidas.put(Material.LONA, List.of(ZAPATILLAS));
+    tiposDePrendaValidas.put(Material.CUERO, List.of(CAMPERA, ZAPATOS, POLLERA, PANTALON));
 
-    if (material.equals(Material.ALGODON) && !tiposDePrendaValidasParaElAlgodon.contains(tipo)){
-      throw new MaterialException("Material no valido para el tipo de prenda");
+    if (!tiposDePrendaValidas.getOrDefault(material, Collections.emptyList()).contains(tipo)) {
+      throw new MaterialException("Material no válido para el tipo de prenda");
     }
-    if (material.equals(Material.PIQUE) && !tiposDePrendaValidasParaElPique.contains(tipo)){
-      throw new MaterialException("Material no valido para el tipo de prenda");
-    }
-    if (material.equals(Material.ACETATO) && !tiposDePrendaValidasParaElAcetato.contains(tipo)){
-      throw new MaterialException("Material no valido para el tipo de prenda");
-    }
-    if (material.equals(Material.LONA) && !tiposDePrendaValidasParaLaLona.contains(tipo)){
-      throw new MaterialException("Material no valido para el tipo de prenda");
-    }
-    if (material.equals(Material.CUERO) && !tiposDePrendaValidasParaElCuero.contains(tipo)){
-      throw new MaterialException("Material no valido para el tipo de prenda");
-    }
-    return;
   }
 
   public Borrador(TipoDePrenda tipo) {

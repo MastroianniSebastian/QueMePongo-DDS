@@ -12,12 +12,13 @@ public class Usuario {
   ServicioClimatico servicioClimatico;
 
   public Usuario(Integer edad, MotorSugerencias motor, ServicioClimatico servicioClimatico) {
-    //TODO
+    this.edad = edad;
+    this.motorSugerencias = motor;
+    this.servicioClimatico = servicioClimatico;
   }
 
-  List<Sugerencia> generarSugerencias() {
-    return this.motorSugerencias.generarSugerencias(this, servicioClimatico.obtenerTemperaturaActualEnLaCiudad("Buenos Aires, Argentina"));
-    //TODO Ver hardcodeo de ciudad
+  List<Sugerencia> generarSugerencias(String ciudad) {
+    return this.motorSugerencias.generarSugerencias(this, servicioClimatico.obtenerTemperaturaActualEnLaCiudad(ciudad));
   }
 
   public void setMotor(MotorSugerencias motor) {

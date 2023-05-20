@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 public class SugerenciaTest {
 
-  AccuWeatherAPIMock accuWeatherAPIMock = new AccuWeatherAPIMock();
+  AccuWeatherAPI accuWeatherAPI = new AccuWeatherAPI();
 
   @Test
   public void probandoMockAccuWeather(){
-    assertEquals(accuWeatherAPIMock.getWeather("Buenos Aires, Argentina").get(0).get("Temperature"),15);
+    assertEquals(accuWeatherAPI.getWeather("Buenos Aires, Argentina").get(0).get("WeatherIcon"),33);
   }
 
   @Test
