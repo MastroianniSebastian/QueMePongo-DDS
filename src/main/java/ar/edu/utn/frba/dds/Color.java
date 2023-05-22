@@ -3,16 +3,28 @@ package ar.edu.utn.frba.dds;
 import com.google.common.base.Preconditions;
 
 public class Color {
-  private int rojo;
-  private int verde;
-  private int azul;
+  private Integer colorRojo;
+  private Integer colorVerde;
+  private Integer colorAzul;
 
-  public Color(int rojo, int verde, int azul) {
+  public Color(Integer rojo, Integer verde, Integer azul) {
     Preconditions.checkNotNull(rojo, "El valor no puede ser nulo");
     Preconditions.checkNotNull(verde, "El valor no puede ser nulo");
     Preconditions.checkNotNull(azul, "El valor no puede ser nulo");
-    this.rojo = rojo;
-    this.verde = verde;
-    this.azul = azul;
+    this.colorRojo = rojo;
+    this.colorVerde = verde;
+    this.colorAzul = azul;
+  }
+
+  public Integer getColorRojo() {
+    return colorRojo;
+  }
+
+  public Integer getColorVerde() {
+    return colorVerde;
+  }
+
+  public Integer getColorAzul() {
+    return colorAzul;
   }
 }

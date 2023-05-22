@@ -6,7 +6,7 @@ public class Uniforme {
   private Prenda prendaInferior;
   private Prenda calzado;
 
-  public Uniforme fabricar(Sastre sastre){
+  public Uniforme fabricar(Sastre sastre) {
     return new Uniforme(
         sastre.fabricarParteSuperior(),
         sastre.fabricarParteInferior(),
@@ -18,5 +18,17 @@ public class Uniforme {
     this.prendaSuperior = prendaSuperior;
     this.prendaInferior = prendaInferior;
     this.calzado = calzado;
+  }
+
+  public Prenda getPrendaSuperior() {
+    return prendaSuperior;
+  }
+
+  public Prenda getPrendaInferior() {
+    return prendaInferior;
+  }
+
+  public Prenda getCalzado() {
+    return calzado;
   }
 }

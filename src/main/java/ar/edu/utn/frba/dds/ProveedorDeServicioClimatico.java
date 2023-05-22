@@ -1,17 +1,17 @@
 package ar.edu.utn.frba.dds;
 
 public class ProveedorDeServicioClimatico {
-  static ServicioClimatico servicioClimatico;
+  private static ServicioClimatico servicioClimatico;
 
-  static ServicioClimatico getServicioClimatico(){
+  public static ServicioClimatico getServicioClimatico() {
     return servicioClimatico;
   }
 
-  static void setServicioClimatico(ServicioClimatico servicioClimatico){
+  public static void setServicioClimatico(ServicioClimatico servicioClimatico) {
     ProveedorDeServicioClimatico.servicioClimatico = servicioClimatico;
   }
 
-  //Un administrador deberia acceder a esta clase estatica y setear
+  //Un administrador deberia eder a esta clase estatica y setear
   //el servicio climatico que quiera.
-  //Ejemplo: ProveedorDeServicioClimatico.setServicioClimatico(servicioAccuWeather);
+  //Ejemplo: ProveedorDeServicioClimatico.setServicioClimatico(serviciouWeather);
 }

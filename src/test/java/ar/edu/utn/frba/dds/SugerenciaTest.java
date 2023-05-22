@@ -1,26 +1,28 @@
 package ar.edu.utn.frba.dds;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class SugerenciaTest {
-
-  AccuWeatherAPI accuWeatherAPI = new AccuWeatherAPI();
+  ProveedorDeServicioClimatico proveedorDeServicioClimatico = new ProveedorDeServicioClimatico();
 
   @Test
-  public void probandoMockAccuWeather(){
-    assertEquals(accuWeatherAPI.getWeather("Buenos Aires, Argentina").get(0).get("WeatherIcon"),33);
+  public void probandoMockAccuWeather() {
+    proveedorDeServicioClimatico.setServicioClimatico(new ServicioAccuWeather());
+    ServicioClimatico servicioClimatico = ProveedorDeServicioClimatico.getServicioClimatico();
+    assertEquals(servicioClimatico.obtenerTemperaturaActualEnLaCiudad("Buenos Aires, Argentina").getValor(), 57);
   }
 
   @Test
-  public void unaRemeraDeMangaCortaPuedeSerCreadaCorrectamenteMEdianteElBorrado(){
-    assertEquals(remeraMangaCorta().esSuperior(),true);
+  public void unaRemeraDeMangaCortaPuedeSerCreadaCorrectamenteMEdianteElBorrado() {
+    assertEquals(remeraMangaCorta().esSuperior(), true);
   }
 
-  private Prenda remeraMangaCorta(){
+  private Prenda remeraMangaCorta() {
     Borrador borrador = new Borrador(TipoDePrenda.REMERA);
     borrador.especificarMaterial(Material.ALGODON);
-    borrador.especificarColorPrincipal(new Color(100,100,100));
+    borrador.especificarColorPrincipal(new Color(100, 100, 100));
     borrador.especificarCategoria(Categoria.PARTE_SUPERIOR);
     borrador.especificarTrama(Trama.RAYADA);
     borrador.especificarFormalidad(Formalidad.INFORMAL);
@@ -28,10 +30,10 @@ public class SugerenciaTest {
     return borrador.crearPrenda();
   }
 
-  private Prenda jean(){
+  private Prenda jean() {
     Borrador borrador = new Borrador(TipoDePrenda.PANTALON);
     borrador.especificarMaterial(Material.CUERO);
-    borrador.especificarColorPrincipal(new Color(100,50,100));
+    borrador.especificarColorPrincipal(new Color(100, 50, 100));
     borrador.especificarCategoria(Categoria.PARTE_INFERIOR);
     borrador.especificarTrama(Trama.LISA);
     borrador.especificarFormalidad(Formalidad.INFORMAL);
@@ -39,10 +41,10 @@ public class SugerenciaTest {
     return borrador.crearPrenda();
   }
 
-  private Prenda zapatillasVansRePiolas(){
+  private Prenda zapatillasVansRePiolas() {
     Borrador borrador = new Borrador(TipoDePrenda.ZAPATILLAS);
     borrador.especificarMaterial(Material.LONA);
-    borrador.especificarColorPrincipal(new Color(100,100,100));
+    borrador.especificarColorPrincipal(new Color(100, 100, 100));
     borrador.especificarCategoria(Categoria.CALZADO);
     borrador.especificarTrama(Trama.LISA);
     borrador.especificarFormalidad(Formalidad.INFORMAL);

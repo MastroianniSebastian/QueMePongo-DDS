@@ -34,7 +34,7 @@ public class PrendaTest {
   }
 
   @Test
-  public void testEsAccesorio() {
+  public void testEsesorio() {
     Borrador borrador = new Borrador(TipoDePrenda.POLLERA);
     borrador.especificarColorPrincipal(new Color(30,30,21));
     borrador.especificarMaterial(Material.CUERO);

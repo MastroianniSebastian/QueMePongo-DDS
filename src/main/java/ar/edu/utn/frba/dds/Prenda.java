@@ -1,9 +1,5 @@
 package ar.edu.utn.frba.dds;
 
-import ar.edu.utn.frba.dds.Excepciones.ColorException;
-import ar.edu.utn.frba.dds.Excepciones.MaterialException;
-import ar.edu.utn.frba.dds.Excepciones.TipoException;
-
 public class Prenda {
   private Color colorPrincipal;
   private Color colorSecundario;
@@ -22,7 +18,9 @@ public class Prenda {
   //Una Prenda
 
 
-  public Prenda(Color colorPrincipal, Color colorSecundario, Material material, TipoDePrenda tipo, Trama trama, Categoria categoria, Formalidad formalidad, Integer temperaturaMaximaAdecuada) {
+  public Prenda(Color colorPrincipal, Color colorSecundario, Material material,
+                TipoDePrenda tipo, Trama trama, Categoria categoria,
+                Formalidad formalidad, Integer temperaturaMaximaAdecuada) {
     this.colorPrincipal = colorPrincipal;
     this.colorSecundario = colorSecundario;
     this.material = material;
@@ -41,7 +39,7 @@ public class Prenda {
     return this.categoria == Categoria.PARTE_INFERIOR;
   }
 
-  public boolean esAccesorio() {
+  public boolean esesorio() {
     return this.categoria == Categoria.ACCESORIOS;
   }
 
@@ -61,5 +59,39 @@ public class Prenda {
     return this.formalidad == Formalidad.NEUTRA;
   }
 
-  public boolean esAdecuada(Integer temperaturaActual){return temperaturaActual <= this.temperaturaMaximaAdecuada;}
+  public boolean esAdecuada(Temperatura temperaturaActual) {
+    return temperaturaActual.getValor() <= this.temperaturaMaximaAdecuada;
+  }
+
+  public Color getColorPrincipal() {
+    return colorPrincipal;
+  }
+
+  public Color getColorSecundario() {
+    return colorSecundario;
+  }
+
+  public Material getMaterial() {
+    return material;
+  }
+
+  public TipoDePrenda getTipo() {
+    return tipo;
+  }
+
+  public Trama getTrama() {
+    return trama;
+  }
+
+  public Categoria getCategoria() {
+    return categoria;
+  }
+
+  public Formalidad getFormalidad() {
+    return formalidad;
+  }
+
+  public Integer getTemperaturaMaximaAdecuada() {
+    return temperaturaMaximaAdecuada;
+  }
 }

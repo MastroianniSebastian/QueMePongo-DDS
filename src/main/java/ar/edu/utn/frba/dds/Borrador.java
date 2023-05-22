@@ -1,12 +1,7 @@
 package ar.edu.utn.frba.dds;
 
-import static ar.edu.utn.frba.dds.TipoDePrenda.*;
-import ar.edu.utn.frba.dds.Excepciones.MaterialException;
+import ar.edu.utn.frba.dds.excepciones.MaterialException;
 import com.google.common.base.Preconditions;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Borrador {
 
@@ -52,30 +47,32 @@ public class Borrador {
     this.categoria = categoria;
   }
 
-  public void especificarFormalidad(Formalidad formalidad){
+  public void especificarFormalidad(Formalidad formalidad) {
     Preconditions.checkNotNull(formalidad, "La formalidad no puede ser nula");
     this.formalidad = formalidad;
   }
 
-  public void especificarTemperaturaMaximaAdecuada(Integer temperaturaMaximaAdecuada){
-    Preconditions.checkNotNull(temperaturaMaximaAdecuada, "La temperatura maxima adecuada no puede ser nula");
+  public void especificarTemperaturaMaximaAdecuada(Integer temperaturaMaximaAdecuada) {
+    Preconditions.checkNotNull(temperaturaMaximaAdecuada,
+        "La temperatura maxima adecuada no puede ser nula");
     this.temperaturaMaximaAdecuada = temperaturaMaximaAdecuada;
   }
 
-  public Prenda crearPrenda(){
-    return new Prenda(colorPrincipal,colorSecundario,material,tipo,trama, categoria,formalidad,temperaturaMaximaAdecuada);
+  public Prenda crearPrenda() {
+    return new Prenda(colorPrincipal, colorSecundario, material,
+        tipo, trama, categoria, formalidad, temperaturaMaximaAdecuada);
 
   }
 
 
   private void validarMaterialConsistenteConTipoDePrenda(Material material) {
-    if (!material.getTipoDePrendasValidas().contains(tipo)) {
+    if (!material.tipoDePrendaValida(tipo)) {
       throw new MaterialException("Material no válido para el tipo de prenda");
     }
   }
 
   public Borrador(TipoDePrenda tipo) {
-    Preconditions.checkNotNull(tipo,"El tipo de prenda no puede ser nulo");
+    Preconditions.checkNotNull(tipo, "El tipo de prenda no puede ser nulo");
     this.tipo = tipo;
   }
 }

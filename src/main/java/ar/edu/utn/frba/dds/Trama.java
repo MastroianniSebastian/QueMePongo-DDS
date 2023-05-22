@@ -1,5 +1,5 @@
 package ar.edu.utn.frba.dds;
 
 public enum Trama {
- LISA, RAYADA
+  LISA, RAYADA
 }

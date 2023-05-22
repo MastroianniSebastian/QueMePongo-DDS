@@ -9,16 +9,13 @@ public class Usuario {
   Integer edad;
   MotorSugerencias motorSugerencias;
 
-  ServicioClimatico servicioClimatico;
-
-  public Usuario(Integer edad, MotorSugerencias motor, ServicioClimatico servicioClimatico) {
+  public Usuario(Integer edad, MotorSugerencias motor) {
     this.edad = edad;
     this.motorSugerencias = motor;
-    this.servicioClimatico = servicioClimatico;
   }
 
   List<Sugerencia> generarSugerencias(String ciudad) {
-    return this.motorSugerencias.generarSugerencias(this, servicioClimatico.obtenerTemperaturaActualEnLaCiudad(ciudad));
+    return this.motorSugerencias.generarSugerencias(this, ciudad);
   }
 
   public void setMotor(MotorSugerencias motor) {
@@ -29,15 +26,11 @@ public class Usuario {
     return this.motorSugerencias;
   }
 
-  public List<Prenda> getPrendas() {
-    return prendas;
-  }
-
   public Integer getEdad() {
     return edad;
   }
 
-  public MotorSugerencias getMotorSugerencias() {
-    return motorSugerencias;
+  public List<Prenda> getPrendas() {
+    return List.copyOf(prendas);
   }
 }

@@ -1,15 +1,16 @@
 package ar.edu.utn.frba.dds;
 
-import static ar.edu.utn.frba.dds.TipoDePrenda.*;
-
 import java.util.List;
 
 public enum Material {
-  ALGODON(List.of(REMERA, CAMISA, PANTALON, SACO, CAMPERA, SHORT, POLLERA)),
-  PIQUE(List.of(SACO, REMERA, CHOMBA)),
-  ACETATO(List.of(SACO, CAMPERA, PANTALON, POLLERA)),
-  LONA(List.of(ZAPATILLAS)),
-  CUERO(List.of(CAMPERA, ZAPATOS, POLLERA, PANTALON));
+  ALGODON(List.of(TipoDePrenda.REMERA, TipoDePrenda.CAMISA, TipoDePrenda.PANTALON,
+      TipoDePrenda.SACO, TipoDePrenda.CAMPERA, TipoDePrenda.SHORT, TipoDePrenda.POLLERA)),
+  PIQUE(List.of(TipoDePrenda.SACO, TipoDePrenda.REMERA, TipoDePrenda.CHOMBA)),
+  ACETATO(List.of(TipoDePrenda.SACO, TipoDePrenda.CAMPERA,
+      TipoDePrenda.PANTALON, TipoDePrenda.POLLERA)),
+  LONA(List.of(TipoDePrenda.ZAPATILLAS)),
+  CUERO(List.of(TipoDePrenda.CAMPERA, TipoDePrenda.ZAPATOS,
+      TipoDePrenda.POLLERA, TipoDePrenda.PANTALON));
   private final List<TipoDePrenda> tipoDePrendasValidas;
 
 
@@ -17,7 +18,7 @@ public enum Material {
     this.tipoDePrendasValidas = tipoDePrendasValidas;
   }
 
-  public List<TipoDePrenda> getTipoDePrendasValidas() {
-    return tipoDePrendasValidas;
+  public boolean tipoDePrendaValida(TipoDePrenda tipoDePrenda) {
+    return tipoDePrendasValidas.contains(tipoDePrenda);
   }
 }

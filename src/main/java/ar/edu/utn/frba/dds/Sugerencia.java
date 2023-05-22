@@ -15,4 +15,16 @@ public class Sugerencia {
     this.inferior = inferior;
     this.calzado = calzado;
   }
+
+  public Prenda getSuperior() {
+    return superior;
+  }
+
+  public Prenda getInferior() {
+    return inferior;
+  }
+
+  public Prenda getCalzado() {
+    return calzado;
+  }
 }
